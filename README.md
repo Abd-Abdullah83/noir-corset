@@ -1,4 +1,4 @@
-# Corset Atelier — Website
+# Noir Corset — Website
 
 Static site (plain HTML/CSS/JS, no build step, no backend). Deploys as-is to Vercel or GitHub Pages.
 
@@ -187,6 +187,7 @@ for a plain static site like this.
 - ✅ Phase 11h: Full site audit (bugs found + fixed)
 - ✅ Phase 12a: Site Search + 404 enhancement
 - ✅ Phase 12b: Mobile gallery gestures + Wishlist sharing
+- ✅ Phase 13: Rebrand to Noir Corset + deposit policy overhaul
 
 ## What the polish pass (Phase 9) covered
 
@@ -501,7 +502,7 @@ hand-typed 14 times. Generated a branded 1200×630 preview image
 (`assets/images/og-image.jpg`) so links shared on WhatsApp/Instagram/
 Facebook now show a real image and description instead of a bare link.
 **One real limitation**: `product.html`'s OG tags are generic ("Product —
-Corset Atelier") since the actual product name is set client-side by
+Noir Corset") since the actual product name is set client-side by
 JavaScript after the page loads — most link-preview crawlers (including
 WhatsApp's) don't execute JavaScript, so they'll see the static fallback.
 Fixing this properly would need server-side rendering per product, which
@@ -841,3 +842,71 @@ direct product link, and opens WhatsApp with it prefilled. Reads the
 current wishlist state fresh at the moment it's clicked rather than
 relying on whatever was last rendered, so it can't go stale between
 renders.
+
+## Phase 13 — Rebrand to Noir Corset + deposit policy overhaul
+
+**Full rebrand, "Corset Atelier" → "Noir Corset"** — 210 text replacements
+across all 17 pages, 6 JS files, `api/chat.js`'s AI assistant prompt, and
+this README. Email updated to `noircorset3@gmail.com` everywhere (40
+replacements). Verified zero old references remain anywhere in the
+codebase after the sweep, not just spot-checked.
+
+**New visual identity** — designed a simplified corset-silhouette
+monogram (bold single shape with center lacing detail, built to stay
+legible even at 16px favicon size) and regenerated every brand asset from
+it: `favicon.svg`, all PNG icon sizes, `apple-touch-icon.png`, the OG
+social-preview image, and the header/footer logo mark (previously a plain
+ring — now the actual monogram, swapped via one CSS change since it was
+always a CSS-only styled `<span>`, not hardcoded markup, so all 51
+occurrences across 17 pages updated from a single edit). The first-visit
+brand loader now shows this monogram animating in (scale + fade) followed
+by the "Noir Corset" wordmark, still comfortably inside the sub-800ms
+budget established back in Phase 11b.
+
+**Deposit policy changed from 70%/30% to 50%/50%, applied consistently**
+— this needed care since "70%" always paired with a complementary
+"remaining 30%" elsewhere in the same sentence; a blind find-and-replace
+on just "70%" would have left mathematically broken text ("50% deposit...
+remaining 30%" ≠ 100%). Handled with paired, phrase-level replacements so
+both numbers always updated together, verified with a follow-up sweep for
+any leftover "remaining 30%" pairing.
+
+**The bigger change**: the deposit policy now applies to *every* order,
+not just custom builds, per your instruction — and customers now actually
+see it at the moment of confirming, not just on the policy page:
+- The **Buy Now** order form (product page) gained a policy notice box
+  and a required consent checkbox, matching the pattern the Custom
+  Builder already used — you can't submit an order without confirming
+  you understand the 50% deposit and non-refundable-after-confirmation
+  terms.
+- **Quick View's** lighter buy flow now includes the same policy language
+  directly in the WhatsApp message it sends, since that flow doesn't have
+  a full form to gate behind a checkbox.
+- The footer payment note, announcement bar, and every policy-adjacent
+  page (Custom Order Policy, Shipping, Terms, FAQs) all updated to match.
+
+**Two real bugs caught while wiring this in, not just copy changes:**
+1. Adding `custom-builder.css` to the product page (needed for the new
+   policy-box/checkbox styles) silently broke mobile responsiveness on
+   the Buy form — `product.css` had its own older copy of `.form-row-2`
+   with no mobile breakpoint, and being loaded *after* custom-builder.css,
+   it was quietly winning the cascade and overriding the correct
+   mobile-stacking version. The phone/email fields would have stayed
+   squeezed side-by-side on narrow phones. Fixed by removing the
+   redundant duplicate, after first confirming every page that needs it
+   loads the correct version.
+2. The policy checkbox — now a *required* field blocking order
+   submission — was only 16×16px, well under a comfortable mobile tap
+   target. Given this is explicitly the flow most customers will complete
+   on their phones, that's real friction at the worst possible moment.
+   Increased to 22px with a properly padded, clickable label so the
+   effective tap area is much larger than the visual box alone.
+
+**Content-management guide** (`CONTENT-GUIDE.md`, new file) — plain-language
+instructions for adding/removing products, categories, FAQs, journal
+posts, and editing policy pages, including exactly which files to touch
+and (for categories specifically, which aren't fully data-driven) which
+two files need updating together. Written honestly about what's fully
+"just edit a data file" (products, journal posts) versus what still needs
+a small HTML/JS edit (categories, FAQs, policy text) — no false claims of
+a no-code system where one doesn't fully exist yet.

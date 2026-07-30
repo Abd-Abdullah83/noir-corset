@@ -312,23 +312,30 @@ button:not(.btn):active { transform: scale(0.95); }
   gap: var(--sp-3);
 }
 .brand-loader-mark .eyelet-glyph-lg {
-  width: 28px; height: 28px;
-  border: 1px solid var(--c-brass);
-  border-radius: 50%;
-  position: relative;
+  width: 46px; height: 52px;
+  background: url('../assets/images/monogram-master.svg') center/contain no-repeat;
+  animation: loaderMonogramIn 550ms var(--ease-signature) both;
 }
-.brand-loader-mark .eyelet-glyph-lg::after {
-  content: '';
-  position: absolute;
-  inset: 9px;
-  background: var(--c-brass);
-  border-radius: 50%;
+@keyframes loaderMonogramIn {
+  0% { opacity: 0; transform: scale(0.75) translateY(6px); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 .brand-loader-word {
   font-family: var(--font-display);
   font-size: 1.4rem;
   color: var(--c-ivory);
   letter-spacing: 0.04em;
+  opacity: 0;
+  animation: loaderWordIn 450ms var(--ease-signature) 180ms both;
+}
+@keyframes loaderWordIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-loader-mark .eyelet-glyph-lg,
+  .brand-loader-word { animation: none; opacity: 1; }
 }
 
 /* ---- Thin branded scrollbar ---- */

@@ -70,9 +70,9 @@
   color: var(--c-ivory);
 }
 .logo-mark .eyelet-glyph {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  border: 1px solid var(--metal);
+  width: 16px; height: 18px;
+  background: url('../assets/images/monogram-master.svg') center/contain no-repeat;
+  flex-shrink: 0;
 }
 
 .header-icons {

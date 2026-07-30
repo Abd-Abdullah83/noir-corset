@@ -198,6 +198,9 @@
   transform: translateY(16px);
   transition: transform var(--dur-med) var(--ease-signature);
 }
+@media (max-width: 480px) {
+  .modal-panel { padding: var(--sp-5); }
+}
 .modal-overlay.is-open .modal-panel { transform: translateY(0); }
 
 .modal-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--sp-5); }
@@ -222,7 +225,9 @@
   border-color: var(--c-oxblood);
   outline: none;
 }
-.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+/* .form-row-2 intentionally not redefined here — custom-builder.css
+   already provides it (with the mobile stacking breakpoint), and every
+   page that loads this file also loads that one. */
 .form-summary { background: var(--c-ivory-soft); border-radius: var(--radius-sm); padding: var(--sp-4); font-size: var(--fs-caption); margin-bottom: var(--sp-5); }
 .form-summary strong { display: block; margin-bottom: var(--sp-1); font-size: var(--fs-body); }
 .modal-submit { width: 100%; margin-top: var(--sp-2); }

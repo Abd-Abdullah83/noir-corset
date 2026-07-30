@@ -164,7 +164,7 @@
       badgeEl.style.display = 'none';
     }
 
-    document.title = `${product.name} — Corset Atelier`;
+    document.title = `${product.name} — Noir Corset`;
 
     // Color swatches
     const colorRow = document.querySelector('[data-color-swatches]');
@@ -280,6 +280,10 @@
       formView.style.display = '';
       confirmView.style.display = 'none';
       summary.innerHTML = `<strong>Order Summary</strong>${buildOrderSummary()}`;
+      const policyCheckbox = form.querySelector('[data-buy-policy-agree]');
+      const policyError = overlay.querySelector('[data-buy-policy-error]');
+      if (policyCheckbox) policyCheckbox.checked = false;
+      if (policyError) policyError.classList.remove('is-visible');
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -302,6 +306,16 @@
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      const policyCheckbox = form.querySelector('[data-buy-policy-agree]');
+      const policyError = overlay.querySelector('[data-buy-policy-error]');
+      if (!policyCheckbox.checked) {
+        policyError.textContent = 'Please confirm you understand the deposit and cancellation policy before continuing.';
+        policyError.classList.add('is-visible');
+        return;
+      }
+      policyError.classList.remove('is-visible');
+
       const data = Object.fromEntries(new FormData(form).entries());
       const { formatPrice } = window.CorsetAtelier;
       const message = [
@@ -318,7 +332,7 @@
         `Address: ${data.address}`,
         `City: ${data.city}`,
         ``,
-        `Payment: Cash on Delivery`
+        `I understand this order requires a 50% deposit to confirm, with the balance due on delivery, and that once confirmed, this deposit is non-refundable if the order is cancelled.`
       ].join('\n');
 
       // Confirmation state — clear feedback that the order was captured
@@ -431,7 +445,7 @@
       description: product.description,
       sku: product.id,
       image: [`${SITE_URL}/assets/images/og-image.jpg`],
-      brand: { '@type': 'Brand', name: 'Corset Atelier' },
+      brand: { '@type': 'Brand', name: 'Noir Corset' },
       offers: {
         '@type': 'Offer',
         url: productUrl,

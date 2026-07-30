@@ -28,7 +28,7 @@
   function renderPost(post, allPosts) {
     const { formatJournalDate } = window.CorsetAtelier;
 
-    document.title = `${post.title} — Corset Atelier`;
+    document.title = `${post.title} — Noir Corset`;
     document.querySelector('[data-post-category]').textContent = post.category;
     document.querySelector('[data-post-title]').textContent = post.title;
     document.querySelector('[data-post-date]').textContent = formatJournalDate(post.date);

@@ -84,7 +84,7 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = new FormData(form).get('email');
-      const message = `Hi! Please add me to the Corset Atelier mailing list.\n\nEmail: ${email}`;
+      const message = `Hi! Please add me to the Noir Corset mailing list.\n\nEmail: ${email}`;
 
       formView.style.display = 'none';
       confirmView.style.display = '';

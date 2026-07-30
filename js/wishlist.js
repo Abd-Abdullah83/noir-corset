@@ -81,7 +81,7 @@
     );
 
     const message = [
-      `Hi! Here's my Corset Atelier wishlist:`,
+      `Hi! Here's my Noir Corset wishlist:`,
       ``,
       ...lines,
       ``,

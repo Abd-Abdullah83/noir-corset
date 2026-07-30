@@ -2,7 +2,7 @@
    CUSTOM BUILDER WIZARD
    Six steps held in one page: type -> fabric -> color -> sizing -> details
    -> review. State lives in memory; the final step builds a formatted
-   WhatsApp message covering every selection plus the 70% deposit terms.
+   WhatsApp message covering every selection plus the 50% deposit terms.
    ========================================================================== */
 
 (function () {
@@ -252,7 +252,7 @@
       `Address: ${state.details.address}`,
       `City: ${state.details.city}`,
       ``,
-      `I understand this requires a 70% deposit to begin production (17 days), with the balance due before delivery, and that deposits are non-refundable once production starts.`
+      `I understand this requires a 50% deposit to confirm the order, with the balance due before delivery, and that once confirmed, this deposit is non-refundable if the order is cancelled.`
     ].filter(Boolean).join('\n');
   }
 

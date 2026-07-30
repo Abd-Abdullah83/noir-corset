@@ -1,0 +1,20 @@
+{
+  "id": "xx-003",
+  "name": "Your Product Name",
+  "category": "bridal",
+  "tags": ["new-arrivals"],
+  "price": 10000,
+  "comparePrice": null,
+  "fabric": "Describe the fabric/construction",
+  "colors": ["Ivory", "Black"],
+  "sizes": ["XS", "S", "M", "L", "XL"],
+  "weight": "450g",
+  "description": "A sentence or two describing the piece.",
+  "swatch": "url('assets/images/xx-003-1.jpg') center/cover",
+  "gallery": [
+    "url('assets/images/xx-003-1.jpg') center/cover",
+    "url('assets/images/xx-003-2.jpg') center/cover",
+    "url('assets/images/xx-003-3.jpg') center/cover"
+  ],
+  "stock": "in-stock"
+}

@@ -174,7 +174,9 @@
           `Color: ${selectedColor}   Size: ${selectedSize}`,
           `Price: ${formatPrice(product.price)}`,
           ``,
-          `Could you send me the order form to confirm delivery details?`
+          `Could you send me the order form to confirm delivery details?`,
+          ``,
+          `I understand this order requires a 50% deposit to confirm, with the balance due on delivery, and that once confirmed, this deposit is non-refundable if the order is cancelled.`
         ].join('\n');
 
     const body = overlay.querySelector('[data-qv-body]');

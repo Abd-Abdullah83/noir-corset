@@ -161,9 +161,15 @@
 .policy-box li { font-size: var(--fs-caption); color: var(--text-muted); padding-left: var(--sp-4); position: relative; }
 .policy-box li::before { content: '—'; position: absolute; left: 0; color: var(--c-brass); }
 
-.policy-check { display: flex; align-items: flex-start; gap: var(--sp-3); margin-bottom: var(--sp-6); }
-.policy-check input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--c-oxblood); flex-shrink: 0; }
-.policy-check label { font-size: var(--fs-caption); color: var(--text-muted); }
+.policy-check { display: flex; align-items: flex-start; gap: var(--sp-3); margin-bottom: var(--sp-6); padding-block: var(--sp-1); }
+.policy-check input {
+  margin-top: 2px;
+  width: 22px; height: 22px;
+  accent-color: var(--c-oxblood);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.policy-check label { font-size: var(--fs-caption); color: var(--text-muted); cursor: pointer; padding-block: 4px; }
 
 /* ---- Nav buttons ---- */
 .step-nav { display: flex; justify-content: space-between; gap: var(--sp-4); margin-top: var(--sp-8); }

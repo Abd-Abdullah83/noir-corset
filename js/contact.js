@@ -15,7 +15,7 @@
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       const message = [
-        `Hi! I'm reaching out from the Corset Atelier website.`,
+        `Hi! I'm reaching out from the Noir Corset website.`,
         ``,
         `Name: ${data.name}`,
         `Phone: ${data.phone || '—'}`,
