@@ -140,8 +140,8 @@
     "name": "Everyday Underbust Corset",
     "category": "underbust",
     "tags": [],
-    "price": 7600,
-    "comparePrice": null,
+    "price": 8599,
+    "comparePrice": 10000,
     "fabric": "Cotton coutil",
     "colors": [
       "Black",
@@ -178,7 +178,7 @@
     "tags": [
       "satin"
     ],
-    "price": 8900,
+    "price": 8999,
     "comparePrice": 10500,
     "fabric": "Duchess satin",
     "colors": [
@@ -211,8 +211,8 @@
     "name": "Premium Underbust Corset",
     "category": "underbust",
     "tags": [],
-    "price": 7600,
-    "comparePrice": null,
+    "price": 8899,
+    "comparePrice": 11000,
     "fabric": "Cotton coutil",
     "colors": [
       "Black",
@@ -276,8 +276,8 @@
     "tags": [
       "new-arrivals"
     ],
-    "price": 6800,
-    "comparePrice": null,
+    "price": 8050,
+    "comparePrice": 11060,
     "fabric": "Compression cotton blend",
     "colors": [
       "Black"
