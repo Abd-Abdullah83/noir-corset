@@ -94,7 +94,7 @@
     ],
     "weight": "540g",
     "description": "A true steel-boned overbust corset built for daily wear and real waist training results, in classic coutil.",
-    "swatch": "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
+     "swatch": "url('assets/images/ob/-001-1.jpg') center/cover",
      "gallery": [
     "url('assets/images/ob/001-1.jpg') center/cover",
     "url('assets/images/ob/001-2.jpg') center/cover",
@@ -158,7 +158,7 @@
     ],
     "weight": "390g",
     "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
-    "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
+     "swatch": "url('assets/images/ub/-001-1.jpg') center/cover",
      "gallery": [
     "url('assets/images/ub/001-1.jpg') center/cover",
     "url('assets/images/ub/001-2.jpg') center/cover",
@@ -194,7 +194,7 @@
     ],
     "weight": "410g",
     "description": "Duchess satin underbust corset with a soft sheen finish and antique brass busk closure.",
-    "swatch": "linear-gradient(160deg,#211014,#A9772F 170%)",
+    "swatch": "url('assets/images/ub/002-1.jpg') center/cover",
     "gallery": [
     "url('assets/images/ub/002-1.jpg') center/cover",
     "url('assets/images/ub/002-2.jpg') center/cover",
@@ -229,7 +229,7 @@
     ],
     "weight": "390g",
     "description": "A lightweight everyday overbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
-    "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
+    "swatch": "url('assets/images/ub/003-1.jpg') center/cover",
      "gallery": [
     "url('assets/images/ub/003-1.jpg') center/cover",
     "url('assets/images/ub/003-2.jpg') center/cover",
