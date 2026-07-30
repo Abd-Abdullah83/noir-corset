@@ -96,11 +96,11 @@
     "description": "A true steel-boned overbust corset built for daily wear and real waist training results, in classic coutil.",
     "swatch": "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
      "gallery": [
-    "url('assets/images/ob/001-1.jpeg') center/cover",
-    "url('assets/images/ob/001-2.jpeg') center/cover",
-    "url('assets/images/ob/001-3.jpeg') center/cover",
-    "url('assets/images/ob/001-4.jpeg') center/cover",
-    "url('assets/images/ob/001-5.jpeg') center/cover"
+    "url('assets/images/ob/001-1.jpg') center/cover",
+    "url('assets/images/ob/001-2.jpg') center/cover",
+    "url('assets/images/ob/001-3.jpg') center/cover",
+    "url('assets/images/ob/001-4.jpg') center/cover",
+    "url('assets/images/ob/001-5.jpg') center/cover"
   ],
     "stock": "low-stock"
   },
@@ -160,14 +160,14 @@
     "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
     "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
      "gallery": [
-    "url('assets/images/ub/001-1.jpeg') center/cover",
-    "url('assets/images/ub/001-2.jpeg') center/cover",
-    "url('assets/images/ub/001-3.jpeg') center/cover",
-    "url('assets/images/ub/001-4.jpeg') center/cover",
-    "url('assets/images/ub/001-5.jpeg') center/cover",
-    "url('assets/images/ub/001-6.jpeg') center/cover",
-    "url('assets/images/ub/001-7.jpeg ') center/cover",
-    "url('assets/images/ub/001-8.jpeg') center/cover"
+    "url('assets/images/ub/001-1.jpg') center/cover",
+    "url('assets/images/ub/001-2.jpg') center/cover",
+    "url('assets/images/ub/001-3.jpg') center/cover",
+    "url('assets/images/ub/001-4.jpg') center/cover",
+    "url('assets/images/ub/001-5.jpg') center/cover",
+    "url('assets/images/ub/001-6.jpg') center/cover",
+    "url('assets/images/ub/001-7.jpg ') center/cover",
+    "url('assets/images/ub/001-8.jpg') center/cover"
   ],
     "stock": "in-stock"
   },
@@ -196,12 +196,12 @@
     "description": "Duchess satin underbust corset with a soft sheen finish and antique brass busk closure.",
     "swatch": "linear-gradient(160deg,#211014,#A9772F 170%)",
     "gallery": [
-    "url('assets/images/ub/002-1.jpeg') center/cover",
-    "url('assets/images/ub/002-2.jpeg') center/cover",
-    "url('assets/images/ub/002-3.jpeg') center/cover",
-    "url('assets/images/ub/002-4.jpeg') center/cover",
-    "url('assets/images/ub/002-5.jpeg') center/cover",
-    "url('assets/images/ub/002-6.jpeg') center/cover",
+    "url('assets/images/ub/002-1.jpg') center/cover",
+    "url('assets/images/ub/002-2.jpg') center/cover",
+    "url('assets/images/ub/002-3.jpg') center/cover",
+    "url('assets/images/ub/002-4.jpg') center/cover",
+    "url('assets/images/ub/002-5.jpg') center/cover",
+    "url('assets/images/ub/002-6.jpg') center/cover",
     "url('assets/images/ub/002-7.jpg') center/cover"
   ],
     "stock": "in-stock"
@@ -231,12 +231,12 @@
     "description": "A lightweight everyday overbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
     "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
      "gallery": [
-    "url('assets/images/ub/003-1.jpeg') center/cover",
-    "url('assets/images/ub/003-2.jpeg') center/cover",
-    "url('assets/images/ub/003-3.jpeg') center/cover",
-    "url('assets/images/ub/003-4.jpeg') center/cover",
-    "url('assets/images/ub/003-5.jpeg') center/cover",
-    "url('assets/images/ub/003-6.jpeg') center/cover"
+    "url('assets/images/ub/003-1.jpg') center/cover",
+    "url('assets/images/ub/003-2.jpg') center/cover",
+    "url('assets/images/ub/003-3.jpg') center/cover",
+    "url('assets/images/ub/003-4.jpg') center/cover",
+    "url('assets/images/ub/003-5.jpg') center/cover",
+    "url('assets/images/ub/003-6.jpg') center/cover"
   ],
     "stock": "in-stock"
   },
