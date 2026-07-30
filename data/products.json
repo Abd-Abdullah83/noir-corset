@@ -159,11 +159,15 @@
     "weight": "390g",
     "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
     "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
-    "gallery": [
-      "linear-gradient(160deg,#171415,#6B1423 150%)",
-      "linear-gradient(40deg,#171415,#6B1423 150%)",
-      "linear-gradient(260deg,#171415,#6B1423 150%)"
-    ],
+     "gallery": [
+    "url('assets/images/ub/001-1.jpg') center/cover",
+    "url('assets/images/ub/001-2.jpg') center/cover",
+    "url('assets/images/ub/001-3.jpg') center/cover",
+    "url('assets/images/ub/001-4.jpg') center/cover",
+    "url('assets/images/ub/001-5.jpg') center/cover",
+    "url('assets/images/ub/001-6.jpg') center/cover",
+    "url('assets/images/ub/001-7.jpg') center/cover"
+  ],
     "stock": "in-stock"
   },
   {
