@@ -195,10 +195,14 @@
     "description": "Duchess satin underbust corset with a soft sheen finish and antique brass busk closure.",
     "swatch": "linear-gradient(160deg,#211014,#A9772F 170%)",
     "gallery": [
-      "linear-gradient(160deg,#211014,#A9772F 170%)",
-      "linear-gradient(40deg,#211014,#A9772F 170%)",
-      "linear-gradient(260deg,#211014,#A9772F 170%)"
-    ],
+    "url('assets/images/ub/002-1.jpg') center/cover",
+    "url('assets/images/ub/002-2.jpg') center/cover",
+    "url('assets/images/ub/002-3.jpg') center/cover",
+    "url('assets/images/ub/002-4.jpg') center/cover",
+    "url('assets/images/ub/002-5.jpg') center/cover",
+    "url('assets/images/ub/002-6.jpg') center/cover",
+    "url('assets/images/ub/002-7.jpg') center/cover"
+  ],
     "stock": "in-stock"
   },
   {
