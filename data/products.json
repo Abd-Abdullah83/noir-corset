@@ -95,11 +95,13 @@
     "weight": "540g",
     "description": "A true steel-boned overbust corset built for daily wear and real waist training results, in classic coutil.",
     "swatch": "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
-    "gallery": [
-      "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
-      "linear-gradient(40deg,#0F0D0E,#4a161d 130%)",
-      "linear-gradient(260deg,#0F0D0E,#4a161d 130%)"
-    ],
+     "gallery": [
+    "url('assets/images/ob/001-1.jpg') center/cover",
+    "url('assets/images/ob/001-2.jpg') center/cover",
+    "url('assets/images/ob/001-3.jpg') center/cover",
+    "url('assets/images/ob/001-4.jpg') center/cover",
+    "url('assets/images/ob/001-5.jpg') center/cover"
+  ],
     "stock": "low-stock"
   },
   {
