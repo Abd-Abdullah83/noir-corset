@@ -208,8 +208,8 @@
   },
    {
     "id": "ub-003",
-    "name": "Premium Overbust Corset",
-    "category": "overbust",
+    "name": "Premium Underbust Corset",
+    "category": "underbust",
     "tags": [],
     "price": 7600,
     "comparePrice": null,
@@ -228,7 +228,7 @@
       "XXL"
     ],
     "weight": "390g",
-    "description": "A lightweight everyday overbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
+    "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
     "swatch": "url('assets/images/ub/003-1.jpg') center/cover",
      "gallery": [
     "url('assets/images/ub/003-1.jpg') center/cover",
