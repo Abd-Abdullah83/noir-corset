@@ -313,7 +313,7 @@ button:not(.btn):active { transform: scale(0.95); }
 }
 .brand-loader-mark .eyelet-glyph-lg {
   width: 46px; height: 52px;
-  background: url('../assets/images/monogram-master.svg') center/contain no-repeat;
+  background: url('../assets/images/monogram-real.png') center/contain no-repeat;
   animation: loaderMonogramIn 550ms var(--ease-signature) both;
 }
 @keyframes loaderMonogramIn {

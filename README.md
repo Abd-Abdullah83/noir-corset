@@ -2,7 +2,7 @@
 
 Static site (plain HTML/CSS/JS, no build step, no backend). Deploys as-is to Vercel or GitHub Pages.
 
-## Structure so far 
+## Structure so far (Phase 0, 1, 3 + 4)
 
 ```
 corset-atelier/

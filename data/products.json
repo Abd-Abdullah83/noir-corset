@@ -77,8 +77,8 @@
     "name": "Classic Overbust Corset",
     "category": "overbust",
     "tags": [],
-    "price": 9999,
-    "comparePrice": 16000,
+    "price": 9800,
+    "comparePrice": 12000,
     "fabric": "Structured coutil with satin face",
     "colors": [
       "Black",
@@ -94,14 +94,12 @@
     ],
     "weight": "540g",
     "description": "A true steel-boned overbust corset built for daily wear and real waist training results, in classic coutil.",
-     "swatch": "url('assets/images/ob/001-1.jpg') center/cover",
-     "gallery": [
-    "url('assets/images/ob/001-1.jpg') center/cover",
-    "url('assets/images/ob/001-2.jpg') center/cover",
-    "url('assets/images/ob/001-3.jpg') center/cover",
-    "url('assets/images/ob/001-4.jpg') center/cover",
-    "url('assets/images/ob/001-5.jpg') center/cover"
-  ],
+    "swatch": "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
+    "gallery": [
+      "linear-gradient(160deg,#0F0D0E,#4a161d 130%)",
+      "linear-gradient(40deg,#0F0D0E,#4a161d 130%)",
+      "linear-gradient(260deg,#0F0D0E,#4a161d 130%)"
+    ],
     "stock": "low-stock"
   },
   {
@@ -140,8 +138,8 @@
     "name": "Everyday Underbust Corset",
     "category": "underbust",
     "tags": [],
-    "price": 8599,
-    "comparePrice": 10000,
+    "price": 7600,
+    "comparePrice": null,
     "fabric": "Cotton coutil",
     "colors": [
       "Black",
@@ -158,17 +156,12 @@
     ],
     "weight": "390g",
     "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
-     "swatch": "url('assets/images/ub/001-1.jpg') center/cover",
-     "gallery": [
-    "url('assets/images/ub/001-1.jpg') center/cover",
-    "url('assets/images/ub/001-2.jpg') center/cover",
-    "url('assets/images/ub/001-3.jpg') center/cover",
-    "url('assets/images/ub/001-4.jpg') center/cover",
-    "url('assets/images/ub/001-5.jpg') center/cover",
-    "url('assets/images/ub/001-6.jpg') center/cover",
-    "url('assets/images/ub/001-7.jpg ') center/cover",
-    "url('assets/images/ub/001-8.jpg') center/cover"
-  ],
+    "swatch": "linear-gradient(160deg,#171415,#6B1423 150%)",
+    "gallery": [
+      "linear-gradient(160deg,#171415,#6B1423 150%)",
+      "linear-gradient(40deg,#171415,#6B1423 150%)",
+      "linear-gradient(260deg,#171415,#6B1423 150%)"
+    ],
     "stock": "in-stock"
   },
   {
@@ -178,7 +171,7 @@
     "tags": [
       "satin"
     ],
-    "price": 8999,
+    "price": 8900,
     "comparePrice": 10500,
     "fabric": "Duchess satin",
     "colors": [
@@ -194,50 +187,12 @@
     ],
     "weight": "410g",
     "description": "Duchess satin underbust corset with a soft sheen finish and antique brass busk closure.",
-    "swatch": "url('assets/images/ub/002-1.jpg') center/cover",
+    "swatch": "linear-gradient(160deg,#211014,#A9772F 170%)",
     "gallery": [
-    "url('assets/images/ub/002-1.jpg') center/cover",
-    "url('assets/images/ub/002-2.jpg') center/cover",
-    "url('assets/images/ub/002-3.jpg') center/cover",
-    "url('assets/images/ub/002-4.jpg') center/cover",
-    "url('assets/images/ub/002-5.jpg') center/cover",
-    "url('assets/images/ub/002-6.jpg') center/cover",
-    "url('assets/images/ub/002-7.jpg') center/cover"
-  ],
-    "stock": "in-stock"
-  },
-   {
-    "id": "ub-003",
-    "name": "Premium Underbust Corset",
-    "category": "underbust",
-    "tags": [],
-    "price": 8899,
-    "comparePrice": 11000,
-    "fabric": "Cotton coutil",
-    "colors": [
-      "Black",
-      "Nude",
-      "Ivory"
+      "linear-gradient(160deg,#211014,#A9772F 170%)",
+      "linear-gradient(40deg,#211014,#A9772F 170%)",
+      "linear-gradient(260deg,#211014,#A9772F 170%)"
     ],
-    "sizes": [
-      "XS",
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "weight": "390g",
-    "description": "A lightweight everyday underbust, breathable cotton coutil, built to layer under shirts and dresses alike.",
-    "swatch": "url('assets/images/ub/003-1.jpg') center/cover",
-     "gallery": [
-    "url('assets/images/ub/003-1.jpg') center/cover",
-    "url('assets/images/ub/003-2.jpg') center/cover",
-    "url('assets/images/ub/003-3.jpg') center/cover",
-    "url('assets/images/ub/003-4.jpg') center/cover",
-    "url('assets/images/ub/003-5.jpg') center/cover",
-    "url('assets/images/ub/003-6.jpg') center/cover"
-  ],
     "stock": "in-stock"
   },
   {
@@ -276,8 +231,8 @@
     "tags": [
       "new-arrivals"
     ],
-    "price": 8050,
-    "comparePrice": 11060,
+    "price": 6800,
+    "comparePrice": null,
     "fabric": "Compression cotton blend",
     "colors": [
       "Black"
