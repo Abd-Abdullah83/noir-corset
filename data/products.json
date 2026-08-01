@@ -1,6 +1,6 @@
 [
   {
-    "id": "br-001",
+    "id": "br-002",
     "name": "Ivory Silk Bridal Corset",
     "category": "bridal",
     "tags": [
@@ -43,14 +43,14 @@
     "stock": "in-stock"
   },
   {
-    "id": "br-002",
+    "id": "br-001",
     "name": "Lace Overlay Bridal Corset",
     "category": "bridal",
     "tags": [
       "new-arrivals"
     ],
-    "price": 13800,
-    "comparePrice": null,
+    "price": 7999,
+    "comparePrice": 10999,
     "fabric": "French lace over silk base",
     "colors": [
       "Ivory",
@@ -64,12 +64,12 @@
     ],
     "weight": "510g",
     "description": "Delicate French lace layered over a fully structured silk base corset, with satin ribbon lacing at the back.",
-    "swatch": "linear-gradient(160deg,#241014,#8A2432 60%,#F6F1E9 150%)",
-    "gallery": [
-      "linear-gradient(160deg,#241014,#8A2432 60%,#F6F1E9 150%)",
-      "linear-gradient(40deg,#241014,#8A2432 60%,#F6F1E9 150%)",
-      "linear-gradient(260deg,#241014,#8A2432 60%,#F6F1E9 150%)"
-    ],
+   "swatch": "url('assets/images/br/001-1.jpg') center/cover",
+  "gallery": [
+    "url('assets/images/br/001-1.jpg') center/cover",
+    "url('assets/images/br/001-2.jpg') center/cover",
+    "url('assets/images/br/001-3.jpg') center/cover"
+  ],
     "stock": "made-to-order"
   },
   {
