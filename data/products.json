@@ -422,8 +422,8 @@
     "tags": [
       "luxury"
     ],
-    "price": 22500,
-    "comparePrice": 27000,
+    "price": 7999,
+    "comparePrice": 10999,
     "fabric": "Silk brocade, hand-finished",
     "colors": [
       "Oxblood",
@@ -436,12 +436,12 @@
     ],
     "weight": "620g",
     "description": "The Atelier's signature piece \u2014 silk brocade, hand-finished boning channels, and an antique brass busk. Limited production.",
-    "swatch": "linear-gradient(160deg,#1a0b0f,#6B1423 45%,#A9772F 100%,#0F0D0E 170%)",
-    "gallery": [
-      "linear-gradient(160deg,#1a0b0f,#6B1423 45%,#A9772F 100%,#0F0D0E 170%)",
-      "linear-gradient(40deg,#1a0b0f,#6B1423 45%,#A9772F 100%,#0F0D0E 170%)",
-      "linear-gradient(260deg,#1a0b0f,#6B1423 45%,#A9772F 100%,#0F0D0E 170%)"
-    ],
+       "swatch": "url('assets/images/ob/002-1.jpg') center/cover",
+  "gallery": [
+    "url('assets/images/ob/002-1.jpg') center/cover",
+    "url('assets/images/ob/002-2.jpg') center/cover",
+    "url('assets/images/ob/002-3.jpg') center/cover"
+  ],
     "stock": "made-to-order"
   },
   {
