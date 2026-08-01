@@ -320,7 +320,7 @@
 .story-split .story-media {
   aspect-ratio: 4/5;
   border-radius: var(--radius-md);
-  background: linear-gradient(155deg, #2b1015 0%, #6B1423 55%, #A9772F 130%);
+  background: url('../assets/images/home/story.jpg') center/cover no-repeat, linear-gradient(155deg, #2b1015 0%, #6B1423 55%, #A9772F 130%);
   box-shadow: inset 0 0 70px 14px rgba(15, 13, 14, 0.38);
 }
 .story-split .story-copy p { color: var(--text-muted); max-width: 46ch; margin-block: var(--sp-5); }

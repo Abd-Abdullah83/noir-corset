@@ -145,10 +145,10 @@
   padding: var(--sp-7);
   margin-bottom: var(--sp-6);
 }
-.review-row { display: flex; justify-content: space-between; padding-block: var(--sp-3); border-bottom: 1px solid var(--c-line); font-size: var(--fs-body); }
+.review-row { display: flex; justify-content: space-between; gap: var(--sp-3); padding-block: var(--sp-3); border-bottom: 1px solid var(--c-line); font-size: var(--fs-body); }
 .review-row:last-child { border-bottom: none; }
-.review-row .review-label { color: var(--text-muted); }
-.review-row .review-value { font-weight: 600; text-align: right; }
+.review-row .review-label { color: var(--text-muted); flex-shrink: 0; }
+.review-row .review-value { font-weight: 600; text-align: right; min-width: 0; overflow-wrap: break-word; }
 
 .policy-box {
   background: var(--c-ivory-soft);

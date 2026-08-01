@@ -17,6 +17,14 @@
   padding-bottom: var(--sp-9);
   align-items: start;
 }
+/* Grid tracks default to min-width:auto, meaning oversized content in
+   .gallery or .pd-info can stretch the whole grid (and page) wider than
+   the viewport instead of wrapping/shrinking inside its own column — this
+   is what let .pd-meta's old fixed-gap layout push the entire product
+   page into horizontal overflow. Belt-and-braces against the same class
+   of bug recurring elsewhere in either column. */
+.product-detail > .gallery,
+.product-detail > .pd-info { min-width: 0; }
 @media (max-width: 900px) {
   .product-detail { grid-template-columns: 1fr; gap: var(--sp-6); }
 }
@@ -146,9 +154,20 @@
 
 .pd-desc { margin-top: var(--sp-5); color: var(--text-muted); max-width: 56ch; }
 
-.pd-meta { display: flex; gap: var(--sp-7); margin-top: var(--sp-5); padding-block: var(--sp-5); border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); }
+/* Grid instead of flex: each of the 3 columns gets an explicit 1fr track
+   plus min-width:0, so long words wrap inside their column instead of
+   forcing the row wider than the viewport — the flex version had no such
+   constraint and was pushing "Production" off the right edge of the
+   screen on narrow phones. */
+.pd-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5) var(--sp-7); margin-top: var(--sp-5); padding-block: var(--sp-5); border-top: 1px solid var(--c-line); border-bottom: 1px solid var(--c-line); }
+.pd-meta-item { min-width: 0; }
 .pd-meta-item h6 { font-size: var(--fs-eyebrow); letter-spacing: var(--ls-eyebrow); text-transform: uppercase; color: var(--metal-text); margin-bottom: var(--sp-1); }
-.pd-meta-item p { font-size: var(--fs-caption); }
+.pd-meta-item p { font-size: var(--fs-caption); overflow-wrap: break-word; }
+@media (max-width: 480px) {
+  .pd-meta { gap: var(--sp-4) var(--sp-3); }
+  .pd-meta-item h6 { font-size: 0.62rem; }
+  .pd-meta-item p { font-size: 0.72rem; }
+}
 
 /* ---- Variant selectors ---- */
 .variant-group { margin-top: var(--sp-6); }

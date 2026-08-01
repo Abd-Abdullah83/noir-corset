@@ -145,7 +145,15 @@
     }, { passive: true });
 
     main.addEventListener('touchend', (e) => {
-      if (main.classList.contains('is-zoomed') || !touchMoved) return;
+      if (main.classList.contains('is-zoomed')) return;
+      if (!touchMoved) return; // a real tap — let the click handler zoom-toggle normally
+
+      // Any deliberate drag (whether or not it was long enough to count as
+      // a swipe) should never also trigger the synthetic click that touch
+      // browsers fire right after touchend — that ghost click was toggling
+      // zoom on drags that moved but didn't cross SWIPE_THRESHOLD.
+      suppressNextClick = true;
+
       const dx = e.changedTouches[0].clientX - touchStartX;
       if (Math.abs(dx) < SWIPE_THRESHOLD) return;
 
@@ -154,9 +162,6 @@
         ? (activeImageIndex + 1) % gallery.length
         : (activeImageIndex - 1 + gallery.length) % gallery.length;
       renderGallery();
-      // A swipe that ends over the image also fires a click right after on
-      // touch devices — suppress that one so it doesn't also toggle zoom.
-      suppressNextClick = true;
     });
   }
 
