@@ -51,7 +51,12 @@
   }
 
   // ---- Share ----
-  const SITE_URL = 'https://noircorset.vercel.app';
+  // Not a hardcoded domain: this site is deployed to more than one host
+  // (Vercel at the root, GitHub Pages under a subpath) and a fixed string
+  // here would be wrong on whichever one isn't "the real one" this week.
+  // Reading it from the page itself means sharing works correctly no
+  // matter which deployment the person is actually using.
+  const SITE_URL = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
 
   function showToast(message) {
     let toast = document.querySelector('.ca-toast');
@@ -76,7 +81,16 @@
   // since it's one static file for every product and link-preview bots
   // don't run the JavaScript that would otherwise pick the right product.
   async function shareProduct(product) {
-    const shareUrl = `${SITE_URL}/api/share?id=${encodeURIComponent(product.id)}`;
+    // Points at the pre-generated static page in /share/ (see
+    // scripts/generate-share-pages.js) rather than product.html directly.
+    // product.html is one static file for every product — a link-preview
+    // bot (WhatsApp, Facebook, etc.) doesn't run the JavaScript that picks
+    // the right product from ?id=, so every shared product link would
+    // otherwise show the same generic site-wide preview (logo, not the
+    // product photo). The static share page has real per-product Open
+    // Graph tags baked in at build time, and works on any static host —
+    // unlike a serverless endpoint, which only runs on some of them.
+    const shareUrl = `${SITE_URL}share/${product.id}.html`;
     const shareData = {
       title: `${product.name} — Noir Corset`,
       text: `${product.name} — ${formatPrice(product.price)} at Noir Corset`,
@@ -133,6 +147,18 @@
       return `url('${v.replace(/'/g, "\\'")}') center/cover no-repeat`;
     }
     return v;
+  }
+
+  // Same distinction as resolveBackground, but returns a bare path (or
+  // null for a gradient placeholder) instead of a CSS background value —
+  // for contexts that need a plain image URL, like structured data.
+  function resolveImagePath(value) {
+    if (!value) return null;
+    let v = String(value).trim();
+    const urlMatch = v.match(/^url\((['"]?)(.*?)\1\)/i);
+    if (urlMatch) v = urlMatch[2];
+    const isUrl = /^(https?:\/\/|\/|data:image)/i.test(v) || /\.(jpe?g|png|webp|gif|avif)(\?.*)?$/i.test(v);
+    return isUrl ? v : null;
   }
 
   // ---- Header scroll state ----
@@ -200,11 +226,51 @@
     });
   }
 
+  // ---- Sitewide structured data ----
+  // Organization + WebSite schema, injected on every page (not just the
+  // homepage) since Google associates this with the domain as a whole,
+  // not any single URL. Helps establish brand identity for search
+  // (knowledge panel eligibility, sitelinks) independent of per-product
+  // Product schema, which only exists on product.html.
+  function injectSiteStructuredData() {
+    if (document.getElementById('ld-organization')) return;
+    const origin = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+    const siteUrl = origin.replace(/\/$/, '');
+
+    const orgScript = document.createElement('script');
+    orgScript.type = 'application/ld+json';
+    orgScript.id = 'ld-organization';
+    orgScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org/',
+      '@type': 'ClothingStore',
+      name: 'Noir Corset',
+      url: `${siteUrl}/index.html`,
+      logo: `${siteUrl}/assets/images/og-image.jpg`,
+      image: `${siteUrl}/assets/images/og-image.jpg`,
+      description: 'Handcrafted corsets for women — bridal, overbust, underbust, waist trainers and evening corsets, made to order and laced to fit.',
+      sameAs: ['https://www.instagram.com/noir_corset/'],
+      priceRange: 'Rs. 6,000–Rs. 25,000'
+    });
+    document.head.appendChild(orgScript);
+
+    const siteScript = document.createElement('script');
+    siteScript.type = 'application/ld+json';
+    siteScript.id = 'ld-website';
+    siteScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org/',
+      '@type': 'WebSite',
+      name: 'Noir Corset',
+      url: `${siteUrl}/index.html`
+    });
+    document.head.appendChild(siteScript);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initHeaderScroll();
     initMobileDrawer();
     updateWishlistBadge();
     markActiveNav();
+    injectSiteStructuredData();
   });
 
   // Expose small helpers other pages can reuse.
@@ -411,6 +477,7 @@
   window.CorsetAtelier = window.CorsetAtelier || {};
   window.CorsetAtelier.getWishlist = getWishlist;
   window.CorsetAtelier.resolveBackground = resolveBackground;
+  window.CorsetAtelier.resolveImagePath = resolveImagePath;
   window.CorsetAtelier.isWishlisted = isWishlisted;
   window.CorsetAtelier.toggleWishlist = toggleWishlist;
   window.CorsetAtelier.updateWishlistBadge = updateWishlistBadge;

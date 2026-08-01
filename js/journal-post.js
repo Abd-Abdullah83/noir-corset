@@ -34,6 +34,14 @@
     document.querySelector('[data-post-date]').textContent = formatJournalDate(post.date);
     document.querySelector('[data-post-media]').style.background = post.swatch;
 
+    const canonicalLink = document.querySelector('[data-canonical]');
+    if (canonicalLink) {
+      const origin = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+      canonicalLink.setAttribute('href', `${origin}journal-post.html?post=${post.slug}`);
+    }
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta && post.excerpt) descMeta.setAttribute('content', post.excerpt);
+
     const body = document.querySelector('[data-post-body]');
     body.innerHTML = post.content.map((para) => `<p>${para}</p>`).join('');
 

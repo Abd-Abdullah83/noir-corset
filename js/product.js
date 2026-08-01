@@ -459,7 +459,11 @@
     'made-to-order': 'https://schema.org/PreOrder',
     'sold-out': 'https://schema.org/OutOfStock'
   };
-  const SITE_URL = 'https://noircorset.vercel.app';
+  // Self-detected rather than hardcoded — see the matching note in
+  // js/main.js. Structured data with the wrong domain baked in actively
+  // hurts SEO (search engines index whatever URL the JSON-LD claims is
+  // canonical), so this matters even more here than for sharing.
+  const SITE_URL = (window.location.origin + window.location.pathname.replace(/[^/]*$/, '')).replace(/\/$/, '');
 
   function injectJSONLD(id, data) {
     const existing = document.getElementById(id);
@@ -472,21 +476,28 @@
   }
 
   function renderStructuredData() {
-    const { categoryLabels } = window.CorsetAtelier;
+    const { categoryLabels, resolveImagePath } = window.CorsetAtelier;
     const productUrl = `${SITE_URL}/product.html?id=${product.id}`;
 
-    // Product schema. Note: `image` points to the site's general social
-    // preview image as a placeholder, since products currently use CSS
-    // gradients, not real photography — schema validates and is accurate
-    // in every other field, but won't be eligible for Google's full image
-    // rich-result treatment until real product photos replace it here.
+    const canonicalLink = document.querySelector('[data-canonical]');
+    if (canonicalLink) canonicalLink.setAttribute('href', productUrl);
+
+    // Uses the real product photo when one exists; falls back to the
+    // site's general social image for products that still only have a
+    // placeholder gradient (see resolveImagePath in main.js).
+    const realImagePath = resolveImagePath(product.swatch);
+    const productImage = realImagePath
+      ? `${SITE_URL}/${realImagePath.replace(/^\/+/, '')}`
+      : `${SITE_URL}/assets/images/og-image.jpg`;
+
+    // Product schema.
     injectJSONLD('ld-product', {
       '@context': 'https://schema.org/',
       '@type': 'Product',
       name: product.name,
       description: product.description,
       sku: product.id,
-      image: [`${SITE_URL}/assets/images/og-image.jpg`],
+      image: [productImage],
       brand: { '@type': 'Brand', name: 'Noir Corset' },
       offers: {
         '@type': 'Offer',
