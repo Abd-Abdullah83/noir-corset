@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
+  const WHATSAPP_NUMBER = '923287658832';
   let product = null;
   let selectedColor = null;
   let selectedSize = null;
@@ -50,7 +50,7 @@
     const activeLayer = main.querySelector('.zoom-layer.is-active') || layers[0];
     const inactiveLayer = Array.from(layers).find((l) => l !== activeLayer) || layers[1];
 
-    inactiveLayer.style.background = activeGallery[activeImageIndex];
+    inactiveLayer.style.background = window.CorsetAtelier.resolveBackground(activeGallery[activeImageIndex]);
     // Force a reflow so the browser registers the new background before we
     // toggle opacity — otherwise the crossfade can skip straight to the end.
     void inactiveLayer.offsetWidth;
@@ -59,9 +59,28 @@
 
     thumbs.innerHTML = activeGallery.map((g, i) => `
       <button type="button" class="gallery-thumb ${i === activeImageIndex ? 'is-active' : ''}" data-thumb-index="${i}" aria-label="View image ${i + 1}">
-        <span class="thumb-bg" style="background:${g}"></span>
+        <span class="thumb-bg" style="background:${window.CorsetAtelier.resolveBackground(g)}"></span>
       </button>
     `).join('');
+
+    const dots = main.querySelector('[data-gallery-dots]');
+    const prevBtn = main.querySelector('[data-gallery-prev]');
+    const nextBtn = main.querySelector('[data-gallery-next]');
+    const multiImage = activeGallery.length > 1;
+    if (dots) {
+      dots.innerHTML = multiImage ? activeGallery.map((_, i) => `
+        <button type="button" class="gallery-dot ${i === activeImageIndex ? 'is-active' : ''}" data-dot-index="${i}" aria-label="Go to image ${i + 1}"></button>
+      `).join('') : '';
+      dots.querySelectorAll('[data-dot-index]').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          activeImageIndex = Number(btn.getAttribute('data-dot-index'));
+          renderGallery();
+        });
+      });
+    }
+    if (prevBtn) prevBtn.style.display = multiImage ? '' : 'none';
+    if (nextBtn) nextBtn.style.display = multiImage ? '' : 'none';
 
     thumbs.querySelectorAll('[data-thumb-index]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -92,6 +111,18 @@
       main.classList.toggle('is-zoomed');
     });
     main.addEventListener('mouseleave', () => main.classList.remove('is-zoomed'));
+
+    // ---- Prev/Next arrows ----
+    const prevBtn = main.querySelector('[data-gallery-prev]');
+    const nextBtn = main.querySelector('[data-gallery-next]');
+    function stepImage(dir) {
+      const gallery = getActiveGallery();
+      if (gallery.length < 2) return;
+      activeImageIndex = (activeImageIndex + dir + gallery.length) % gallery.length;
+      renderGallery();
+    }
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); stepImage(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); stepImage(1); });
 
     // ---- Touch: swipe left/right to advance the gallery ----
     // Disabled while zoomed (a zoomed image is meant to be panned by touch,
@@ -143,7 +174,7 @@
       buyBtn.classList.add('btn-outline-dark');
       buyBtn.classList.remove('btn-primary');
     } else {
-      buyBtn.textContent = 'Buy Now — Order via WhatsApp';
+      buyBtn.textContent = 'Order via WhatsApp';
       buyBtn.classList.add('btn-primary');
       buyBtn.classList.remove('btn-outline-dark');
     }
@@ -217,6 +248,12 @@
 
     // Custom build link carries the product name along
     document.querySelector('[data-custom-link]').href = `custom-builder.html?base=${encodeURIComponent(product.name)}`;
+
+    // Share button
+    const shareBtn = document.querySelector('[data-pd-share]');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => window.CorsetAtelier.shareProduct(product));
+    }
   }
 
   async function renderRelated() {
@@ -417,7 +454,7 @@
     'made-to-order': 'https://schema.org/PreOrder',
     'sold-out': 'https://schema.org/OutOfStock'
   };
-  const SITE_URL = 'https://abd-abdullah83.github.io/Corset-Atelier';
+  const SITE_URL = 'https://noircorset.vercel.app';
 
   function injectJSONLD(id, data) {
     const existing = document.getElementById(id);

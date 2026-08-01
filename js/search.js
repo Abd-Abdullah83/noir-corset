@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
+  const WHATSAPP_NUMBER = '923287658832';
   let overlay = null;
   let dataLoaded = false;
   let allProducts = [];
@@ -110,7 +110,7 @@
       html += '<div class="search-section-label">Products</div>';
       html += matchedProducts.map((p) => `
         <a href="product.html?id=${p.id}" class="search-result-item">
-          <span class="search-result-swatch" style="background:${p.swatch}"></span>
+          <span class="search-result-swatch" style="background:${window.CorsetAtelier.resolveBackground(p.swatch)}"></span>
           <span class="search-result-text">
             <span class="search-result-title">${p.name}</span>
             <span class="search-result-meta">${categoryLabels[p.category] || p.category} · ${formatPrice(p.price)}</span>
@@ -122,7 +122,7 @@
       html += '<div class="search-section-label">Journal</div>';
       html += matchedPosts.map((post) => `
         <a href="journal-post.html?post=${post.slug}" class="search-result-item">
-          <span class="search-result-swatch" style="background:${post.swatch}"></span>
+          <span class="search-result-swatch" style="background:${window.CorsetAtelier.resolveBackground(post.swatch)}"></span>
           <span class="search-result-text">
             <span class="search-result-title">${post.title}</span>
             <span class="search-result-meta">${post.category}</span>

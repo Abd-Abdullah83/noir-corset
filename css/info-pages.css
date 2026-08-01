@@ -88,6 +88,11 @@
 .size-table td:first-child, .size-table th:first-child { text-align: left; font-weight: 700; color: var(--text-primary); }
 .size-table tbody tr:hover { background: var(--c-ivory-soft); }
 
+.size-steps { margin: var(--sp-5) 0; padding-left: var(--sp-6); color: var(--text-muted); }
+.size-steps li { padding-block: var(--sp-2); font-size: var(--fs-body); }
+.size-steps li strong { color: var(--text-primary); }
+.size-steps-note { font-size: var(--fs-caption); color: var(--text-muted); font-style: italic; }
+
 .measure-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); margin-top: var(--sp-7); }
 @media (max-width: 760px) { .measure-steps { grid-template-columns: 1fr; } }
 .measure-step { text-align: center; }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/index.html</loc><priority>1.0</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/collections.html</loc><priority>0.9</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/custom-builder.html</loc><priority>0.8</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/our-story.html</loc><priority>0.6</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/size-guide.html</loc><priority>0.6</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/journal.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/gift-cards.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/custom-order-policy.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/faqs.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/shipping.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/contact.html</loc><priority>0.5</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/privacy-policy.html</loc><priority>0.2</priority></url>
-  <url><loc>https://abd-abdullah83.github.io/Corset-Atelier/terms.html</loc><priority>0.2</priority></url>
+  <url><loc>https://noircorset.vercel.app/index.html</loc><priority>1.0</priority></url>
+  <url><loc>https://noircorset.vercel.app/collections.html</loc><priority>0.9</priority></url>
+  <url><loc>https://noircorset.vercel.app/custom-builder.html</loc><priority>0.8</priority></url>
+  <url><loc>https://noircorset.vercel.app/our-story.html</loc><priority>0.6</priority></url>
+  <url><loc>https://noircorset.vercel.app/size-guide.html</loc><priority>0.6</priority></url>
+  <url><loc>https://noircorset.vercel.app/journal.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/gift-cards.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/custom-order-policy.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/faqs.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/shipping.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/contact.html</loc><priority>0.5</priority></url>
+  <url><loc>https://noircorset.vercel.app/privacy-policy.html</loc><priority>0.2</priority></url>
+  <url><loc>https://noircorset.vercel.app/terms.html</loc><priority>0.2</priority></url>
 </urlset>

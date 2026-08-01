@@ -48,6 +48,23 @@
               border-color var(--dur-fast) var(--ease-signature);
   white-space: nowrap;
 }
+
+@media (max-width: 760px) {
+  /* On mobile, keep the category chips on a single line the user swipes
+     through horizontally instead of letting them wrap into a tall stack. */
+  .filter-chips {
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--sp-2);
+    margin-bottom: calc(var(--sp-2) * -1);
+    scrollbar-width: none;
+  }
+  .filter-chips::-webkit-scrollbar { display: none; }
+  .filter-chip { scroll-snap-align: start; }
+}
 .filter-chip:hover { border-color: var(--c-charcoal); color: var(--c-charcoal); }
 .filter-chip.is-active { background: var(--c-void); border-color: var(--c-void); color: var(--c-ivory); }
 
@@ -134,6 +151,22 @@
 .wishlist-btn:hover { background: rgba(15,13,14,0.55); transform: scale(1.06); }
 .wishlist-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; transition: fill var(--dur-fast), stroke var(--dur-fast); }
 .wishlist-btn.is-active svg { fill: var(--c-oxblood); stroke: var(--c-oxblood); }
+
+.share-btn {
+  position: absolute;
+  top: calc(var(--sp-3) + 42px); right: var(--sp-3);
+  z-index: 2;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(15,13,14,0.35);
+  backdrop-filter: blur(4px);
+  border: none;
+  color: var(--c-ivory);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--dur-fast) var(--ease-signature), transform var(--dur-fast) var(--ease-signature);
+}
+.share-btn:hover { background: rgba(15,13,14,0.55); transform: scale(1.06); }
+.share-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
 
 .product-quickview {
   position: absolute;

@@ -67,11 +67,61 @@
 }
 .gallery-main.is-zoomed .zoom-hint { opacity: 0; }
 
+/* ---- Slider controls: arrows + dots ---- */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(15,13,14,0.45);
+  color: var(--c-ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-signature), opacity var(--dur-fast);
+}
+.gallery-nav:hover { background: rgba(15,13,14,0.72); }
+.gallery-nav svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+.gallery-nav-prev { left: var(--sp-3); }
+.gallery-nav-next { right: var(--sp-3); }
+.gallery-main.is-zoomed .gallery-nav { opacity: 0; pointer-events: none; }
+
+.gallery-dots {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-4);
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 6px;
+}
+.gallery-dot {
+  width: 6px; height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(246,241,233,0.5);
+  transition: background var(--dur-fast) var(--ease-signature), width var(--dur-fast) var(--ease-signature);
+}
+.gallery-dot.is-active { background: var(--c-ivory); width: 18px; }
+.gallery-main.is-zoomed .gallery-dots { opacity: 0; pointer-events: none; }
+
 .gallery-thumbs {
   display: flex;
   gap: var(--sp-3);
   margin-top: var(--sp-4);
+  /* Safe for today's 3-photo galleries either way, but this keeps any
+     future product with more photos reachable by scroll instead of
+     silently overflowing off the edge of a narrow phone screen. */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.gallery-thumbs::-webkit-scrollbar { display: none; }
 .gallery-thumb {
   width: 76px; height: 96px;
   border-radius: var(--radius-sm);

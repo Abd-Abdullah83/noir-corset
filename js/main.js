@@ -50,6 +50,56 @@
     return 'Rs. ' + Number(amount).toLocaleString('en-PK');
   }
 
+  // ---- Share ----
+  const SITE_URL = 'https://noircorset.vercel.app';
+
+  function showToast(message) {
+    let toast = document.querySelector('.ca-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'ca-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.remove('is-visible');
+    void toast.offsetWidth;
+    toast.classList.add('is-visible');
+    clearTimeout(toast._hideTimer);
+    toast._hideTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
+  }
+
+  // Shared "share this product" action used by the product page and every
+  // product card. Points at /api/share?id=... rather than product.html
+  // directly, since that endpoint serves per-product Open Graph tags so
+  // the shared link actually shows the product's photo, name, and price
+  // when pasted into WhatsApp or other apps — product.html itself can't,
+  // since it's one static file for every product and link-preview bots
+  // don't run the JavaScript that would otherwise pick the right product.
+  async function shareProduct(product) {
+    const shareUrl = `${SITE_URL}/api/share?id=${encodeURIComponent(product.id)}`;
+    const shareData = {
+      title: `${product.name} — Noir Corset`,
+      text: `${product.name} — ${formatPrice(product.price)} at Noir Corset`,
+      url: shareUrl
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // AbortError just means the user closed the share sheet — not a failure.
+      }
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        showToast('Link copied to clipboard');
+        return;
+      } catch (err) { /* fall through to WhatsApp */ }
+    }
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareData.text + ' ' + shareUrl)}`, '_blank', 'noopener');
+  }
+
   function discountPercent(price, comparePrice) {
     if (!comparePrice || comparePrice <= price) return null;
     return Math.round(((comparePrice - price) / comparePrice) * 100);
@@ -62,6 +112,27 @@
     const res = await fetch('data/products.json');
     productsCache = await res.json();
     return productsCache;
+  }
+
+  // ---- Background value resolver ----
+  // Product/journal "swatch" and "gallery" fields have always held CSS
+  // gradient strings (placeholders). As real photography gets added, some
+  // of those fields end up holding a plain image path/URL instead — used
+  // directly as `background: <value>` that's invalid CSS (a bare path
+  // isn't a valid background value), so the element silently falls back
+  // to its default background color instead of showing the photo. This
+  // detects a path/URL and wraps it in url(...) so both keep working from
+  // the same field without needing a separate "image" key in the data.
+  function resolveBackground(value) {
+    if (!value) return '';
+    const v = String(value).trim();
+    if (/^(linear-gradient|radial-gradient|conic-gradient|repeating-linear-gradient|url\(|#|rgba?\(|hsla?\()/i.test(v)) {
+      return v;
+    }
+    if (/^(https?:\/\/|\.{0,2}\/|data:image)/i.test(v) || /\.(jpe?g|png|webp|gif|avif|svg)(\?.*)?$/i.test(v)) {
+      return `url('${v.replace(/'/g, "\\'")}') center/cover no-repeat`;
+    }
+    return v;
   }
 
   // ---- Header scroll state ----
@@ -140,7 +211,7 @@
   const STOCK_INFO = {
     'in-stock': { text: 'In Stock', className: 'stock-in' },
     'low-stock': { text: 'Low Stock', className: 'stock-low' },
-    'made-to-order': { text: 'Made to Order · 17 Days', className: 'stock-made' },
+    'made-to-order': { text: 'Made to Order · 7 Days', className: 'stock-made' },
     'sold-out': { text: 'Sold Out', className: 'stock-out' }
   };
 
@@ -170,10 +241,13 @@
     return `
       <div class="product-card" data-product-id="${p.id}">
         <div class="product-media">
-          <div class="media-bg" style="background:${p.swatch}"></div>
+          <div class="media-bg" style="background:${resolveBackground(p.swatch)}"></div>
           ${discount ? `<span class="product-badge">-${discount}%</span>` : ((p.tags || []).includes('new-arrivals') ? '<span class="product-badge" style="background:var(--c-brass)">New</span>' : '')}
           <button type="button" class="wishlist-btn ${wishlisted ? 'is-active' : ''}" data-wishlist-toggle="${p.id}" aria-label="Toggle wishlist">
             <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5.1 4 3.5 7.7C16.5 16.4 12 21 12 21z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="share-btn" data-share-trigger="${p.id}" aria-label="Share this product">
+            <svg viewBox="0 0 24 24"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zm12 6a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <button type="button" class="product-quickview" data-quickview-trigger="${p.id}">Quick View</button>
         </div>
@@ -205,6 +279,17 @@
           void btn.offsetWidth;
           btn.classList.add('is-pulsing');
         }
+      });
+    });
+    // Share buttons ride along with wishlist buttons since both live on
+    // every product card and are bound at the same call sites.
+    (scope || document).querySelectorAll('[data-share-trigger]').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-share-trigger');
+        const all = await getProducts();
+        const product = all.find((p) => p.id === id);
+        if (product) shareProduct(product);
       });
     });
   }
@@ -282,7 +367,7 @@
   function renderJournalCard(post) {
     return `
       <a href="journal-post.html?post=${post.slug}" class="journal-card">
-        <div class="journal-card-media" style="background:${post.swatch}"></div>
+        <div class="journal-card-media" style="background:${resolveBackground(post.swatch)}"></div>
         <div class="journal-card-body">
           <span class="journal-card-category">${post.category}</span>
           <h3 class="journal-card-title">${post.title}</h3>
@@ -325,10 +410,12 @@
 
   window.CorsetAtelier = window.CorsetAtelier || {};
   window.CorsetAtelier.getWishlist = getWishlist;
+  window.CorsetAtelier.resolveBackground = resolveBackground;
   window.CorsetAtelier.isWishlisted = isWishlisted;
   window.CorsetAtelier.toggleWishlist = toggleWishlist;
   window.CorsetAtelier.updateWishlistBadge = updateWishlistBadge;
   window.CorsetAtelier.formatPrice = formatPrice;
+  window.CorsetAtelier.shareProduct = shareProduct;
   window.CorsetAtelier.discountPercent = discountPercent;
   window.CorsetAtelier.getProducts = getProducts;
   window.CorsetAtelier.categoryLabels = CATEGORY_LABELS;

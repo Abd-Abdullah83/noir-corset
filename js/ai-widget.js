@@ -13,13 +13,19 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
+  const WHATSAPP_NUMBER = '923287658832';
   const SUGGESTIONS = ['Help me find my size', 'What fabrics do you use?', 'How does a custom order work?', 'What\'s your delivery time?'];
   let history = [];
   let hasGreeted = false;
   let backendUnavailable = false;
 
   function injectStyles() {
+    // Pages now link css/ai-widget.css directly in <head> so it's ready
+    // before this script runs (this used to inject the stylesheet at
+    // runtime, which caused a visible flash of the unstyled button before
+    // the CSS arrived). Only fall back to injecting it here if a page
+    // forgot to add the <head> link.
+    if (document.querySelector('link[href="css/ai-widget.css"]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'css/ai-widget.css';

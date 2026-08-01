@@ -91,6 +91,20 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 500; }
               transform 150ms var(--ease-signature),
               box-shadow 150ms var(--ease-signature);
   white-space: nowrap;
+  max-width: 100%;
+}
+@media (max-width: 480px) {
+  /* Long button labels (e.g. "Order via WhatsApp") were overflowing and
+     getting visually clipped on narrow phones — let them wrap onto a
+     second line instead, with tighter padding/font so it still reads
+     as one compact button rather than an overflowing one. */
+  .btn {
+    white-space: normal;
+    text-align: center;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
 }
 
 .btn-primary {
@@ -302,40 +316,80 @@ button:not(.btn):active { transform: scale(0.95); }
   display: none;
   align-items: center;
   justify-content: center;
-  transition: opacity 300ms ease;
+  transition: opacity 380ms ease;
 }
 .brand-loader.is-hiding { opacity: 0; }
 .brand-loader-mark {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-3);
+  gap: var(--sp-4);
 }
-.brand-loader-mark .eyelet-glyph-lg {
-  width: 46px; height: 52px;
-  background: url('../assets/images/monogram-real.png') center/contain no-repeat;
-  animation: loaderMonogramIn 550ms var(--ease-signature) both;
+
+/* ---- Animated SVG mark ----
+   A corset front panel draws itself in outline, then the spiral lace
+   threads through the eyelets left-to-right-to-left, with each eyelet
+   catching a small pulse of light as the lace passes it — a small,
+   on-brand piece of motion instead of a static logo fading in. */
+.brand-loader-svg { color: var(--c-ivory); overflow: visible; }
+.brand-loader-svg .bl-panel {
+  stroke: var(--c-ivory);
+  opacity: 0.55;
+  fill: none;
+  stroke-dasharray: 470;
+  stroke-dashoffset: 470;
+  animation: blPanelDraw 700ms var(--ease-signature) 60ms both;
 }
-@keyframes loaderMonogramIn {
-  0% { opacity: 0; transform: scale(0.75) translateY(6px); }
-  60% { opacity: 1; }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
+.brand-loader-svg .bl-lace {
+  stroke: var(--c-ivory);
+  fill: none;
+  stroke-dasharray: 330;
+  stroke-dashoffset: 330;
+  animation: blLaceDraw 650ms var(--ease-signature) 520ms both;
 }
+.brand-loader-svg .bl-eyelet {
+  fill: var(--c-brass);
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: blEyeletPop 420ms var(--ease-signature) both;
+}
+/* Delays line up with the moment the lace-draw animation's tip passes
+   each eyelet's position along the zigzag path (lace starts at 520ms,
+   takes ~650ms across 5 equal segments). */
+.brand-loader-svg .bl-eyelet:nth-of-type(1) { animation-delay: 520ms; }
+.brand-loader-svg .bl-eyelet:nth-of-type(2) { animation-delay: 650ms; }
+.brand-loader-svg .bl-eyelet:nth-of-type(3) { animation-delay: 780ms; }
+.brand-loader-svg .bl-eyelet:nth-of-type(4) { animation-delay: 910ms; }
+.brand-loader-svg .bl-eyelet:nth-of-type(5) { animation-delay: 1040ms; }
+.brand-loader-svg .bl-eyelet:nth-of-type(6) { animation-delay: 1170ms; }
+
+@keyframes blPanelDraw { to { stroke-dashoffset: 0; } }
+@keyframes blLaceDraw { to { stroke-dashoffset: 0; } }
+@keyframes blEyeletPop {
+  0% { opacity: 0; transform: scale(0.2); }
+  60% { opacity: 1; transform: scale(1.35); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .brand-loader-word {
   font-family: var(--font-display);
   font-size: 1.4rem;
   color: var(--c-ivory);
   letter-spacing: 0.04em;
   opacity: 0;
-  animation: loaderWordIn 450ms var(--ease-signature) 180ms both;
+  animation: loaderWordIn 500ms var(--ease-signature) 1300ms both;
 }
 @keyframes loaderWordIn {
   0% { opacity: 0; transform: translateY(6px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand-loader-mark .eyelet-glyph-lg,
-  .brand-loader-word { animation: none; opacity: 1; }
+  .brand-loader-svg .bl-panel,
+  .brand-loader-svg .bl-lace,
+  .brand-loader-svg .bl-eyelet,
+  .brand-loader-word { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  .brand-loader-svg .bl-eyelet { transform: scale(1); }
 }
 
 /* ---- Thin branded scrollbar ---- */
@@ -373,3 +427,31 @@ html { scrollbar-width: thin; scrollbar-color: var(--c-brass) var(--c-ivory-soft
 .stock-badge.stock-made::before { background: var(--c-brass); }
 .stock-badge.stock-out { color: var(--text-muted); }
 .stock-badge.stock-out::before { background: var(--text-muted); }
+
+/* ---- Share toast ---- */
+.ca-toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--sp-6);
+  transform: translate(-50%, 12px);
+  z-index: 999;
+  background: var(--c-void);
+  color: var(--c-ivory);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-caption);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-signature), transform var(--dur-fast) var(--ease-signature);
+  max-width: calc(100% - var(--sp-6) * 2);
+  text-align: center;
+}
+.ca-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (max-width: 480px) {
+  .ca-toast { bottom: calc(var(--sp-5) + env(safe-area-inset-bottom, 0px)); font-size: 0.72rem; padding: 0.7rem 1.1rem; }
+}

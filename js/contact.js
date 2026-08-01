@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
+  const WHATSAPP_NUMBER = '923287658832';
 
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('[data-contact-form]');

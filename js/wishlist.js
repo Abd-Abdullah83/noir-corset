@@ -9,8 +9,8 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
-  const SITE_URL = 'https://abd-abdullah83.github.io/Corset-Atelier';
+  const WHATSAPP_NUMBER = '923287658832';
+  const SITE_URL = 'https://noircorset.vercel.app';
   let hasLoadedOnce = false;
 
   async function render() {

@@ -46,6 +46,31 @@
 }
 .qv-close svg { width: 14px; height: 14px; stroke: var(--c-ivory); fill: none; }
 
+/* Pinned link so mobile users see "view full details" the moment the
+   modal opens, without having to scroll the panel upward to find it. */
+.qv-full-link-top {
+  position: absolute;
+  top: var(--sp-4); left: var(--sp-4);
+  z-index: 2;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--ls-caption);
+  text-transform: uppercase;
+  color: var(--c-ivory);
+  background: rgba(15,13,14,0.5);
+  padding: 0.5rem 0.8rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  max-width: calc(100% - 96px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 640px) {
+  .qv-full-link-top { font-size: 0.62rem; padding: 0.4rem 0.65rem; }
+}
+
+.qv-swatch-row-line { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); flex-wrap: wrap; }
+.qv-full-link-inline { font-size: var(--fs-caption); color: var(--c-oxblood); text-decoration: underline; white-space: nowrap; }
+
 .qv-grid { display: grid; grid-template-columns: 1fr 1fr; }
 @media (max-width: 640px) { .qv-grid { grid-template-columns: 1fr; } }
 

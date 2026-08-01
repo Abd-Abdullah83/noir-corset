@@ -8,12 +8,31 @@
 .announce-bar {
   background: var(--c-void);
   color: var(--metal);
-  text-align: center;
-  padding: var(--sp-3) var(--sp-4);
+  padding-block: var(--sp-3);
   font-size: var(--fs-eyebrow);
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
   border-bottom: 1px solid var(--c-line-dark);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.announce-track {
+  display: inline-flex;
+  width: max-content;
+  animation: announceSlide 22s linear infinite;
+}
+.announce-track span {
+  display: inline-block;
+  padding-inline: var(--sp-6);
+}
+@keyframes announceSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .announce-track { animation: none; }
+  .announce-bar { text-align: center; }
+  .announce-track span:last-child { display: none; }
 }
 
 .site-header {
@@ -157,6 +176,8 @@
   box-shadow: -16px 0 48px rgba(0,0,0,0.4);
   transform: translateX(100%);
   transition: transform var(--dur-med) var(--ease-signature);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .mobile-drawer.is-open { transform: translateX(0); }
 
@@ -256,6 +277,14 @@
 }
 .footer-social a:hover { border-color: var(--metal); color: var(--metal); }
 .footer-social svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
+/* Some social marks (Instagram, Facebook, LinkedIn) are solid glyphs, not
+   stroked line icons — the default stroke/fill above rendered them as
+   invisible hairlines, so give solid glyphs their fill back. */
+.footer-social svg.icon-solid,
+.header-icons svg.icon-solid {
+  fill: currentColor;
+  stroke: none;
+}
 
 .footer-bottom {
   display: flex;

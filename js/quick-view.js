@@ -16,7 +16,7 @@
 (function () {
   'use strict';
 
-  const WHATSAPP_NUMBER = '923286712746';
+  const WHATSAPP_NUMBER = '923287658832';
   let overlay = null;
   let product = null;
   let selectedColor = null;
@@ -36,6 +36,7 @@
     el.setAttribute('aria-label', 'Quick view');
     el.innerHTML = `
       <div class="qv-panel">
+        <a href="#" class="qv-full-link-top" data-qv-full-link-top>View Full Details &amp; Photos</a>
         <button type="button" class="qv-close" data-qv-close aria-label="Close quick view">
           <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke-width="1.5" stroke-linecap="round"/></svg>
         </button>
@@ -58,6 +59,8 @@
     product = p;
     selectedColor = p.colors[0];
     selectedSize = p.sizes[0];
+    const topLink = overlay.querySelector('[data-qv-full-link-top]');
+    if (topLink) topLink.href = `product.html?id=${p.id}`;
     renderContent();
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
@@ -78,7 +81,7 @@
 
     body.innerHTML = `
       <div class="qv-grid">
-        <div class="qv-media" style="background:${product.swatch}"></div>
+        <div class="qv-media" style="background:${window.CorsetAtelier.resolveBackground(product.swatch)}"></div>
         <div class="qv-info">
           <span class="qv-category">${categoryLabels[product.category] || product.category}</span>
           <h2 class="qv-name">${product.name}</h2>
@@ -92,7 +95,10 @@
 
           <div class="qv-variant-group">
             <div class="qv-variant-label"><h6>Color</h6><span data-qv-color-value>${selectedColor}</span></div>
-            <div class="qv-swatch-row" data-qv-colors></div>
+            <div class="qv-swatch-row-line">
+              <div class="qv-swatch-row" data-qv-colors></div>
+              <a href="product.html?id=${product.id}" class="qv-full-link-inline">All photos &amp; details</a>
+            </div>
           </div>
 
           <div class="qv-variant-group">
@@ -104,6 +110,9 @@
             <button type="button" class="btn ${window.CorsetAtelier.isPurchasable(product.stock) ? 'btn-primary' : 'btn-outline-dark'}" data-qv-buy>${window.CorsetAtelier.isPurchasable(product.stock) ? 'Buy Now — WhatsApp' : 'Notify Me — WhatsApp'}</button>
             <button type="button" class="qv-wishlist-btn ${isWishlisted(product.id) ? 'is-active' : ''}" data-qv-wishlist aria-label="Toggle wishlist">
               <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5.1 4 3.5 7.7C16.5 16.4 12 21 12 21z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="qv-wishlist-btn" data-qv-share aria-label="Share this product">
+              <svg viewBox="0 0 24 24"><path d="M18 8a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 100-6 3 3 0 000 6zm12 6a3 3 0 100-6 3 3 0 000 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
           <a href="product.html?id=${product.id}" class="btn-ghost qv-full-link">View Full Details &amp; Photos</a>
@@ -152,6 +161,9 @@
     });
 
     body.querySelector('[data-qv-buy]').addEventListener('click', handleBuy);
+
+    const shareBtn = body.querySelector('[data-qv-share]');
+    if (shareBtn) shareBtn.addEventListener('click', () => window.CorsetAtelier.shareProduct(product));
   }
 
   function pulseWishlistIcon(el, active) {

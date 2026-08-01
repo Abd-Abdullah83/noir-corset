@@ -219,11 +219,18 @@
   position: absolute; left: var(--sp-5); bottom: var(--sp-5); right: var(--sp-5);
   color: var(--c-ivory);
   display: flex; align-items: center; justify-content: space-between;
+  gap: var(--sp-2);
 }
-.collection-tile .tile-label h3 { font-size: var(--fs-h5); }
+.collection-tile .tile-label h3 {
+  font-size: var(--fs-h5);
+  min-width: 0;
+  overflow-wrap: break-word;
+  line-height: 1.15;
+}
 .collection-tile.is-featured .tile-label h3 { font-size: var(--fs-h3); }
 .collection-tile .tile-arrow {
   width: 34px; height: 34px;
+  flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid rgba(246,241,233,0.5);
   display: inline-flex; align-items: center; justify-content: center;
@@ -236,6 +243,17 @@
   .collection-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; }
   .collection-tile.is-featured { grid-column: span 2; grid-row: span 1; height: 320px; }
   .collection-tile { height: 220px; }
+}
+
+@media (max-width: 480px) {
+  /* Narrow single-column tiles: keep the label text from overrunning the
+     tile edge or crowding the arrow button — tighter padding, smaller
+     type, and the arrow shrinks a touch so both always fit on one line. */
+  .collection-tile .tile-label { left: var(--sp-3); right: var(--sp-3); bottom: var(--sp-3); }
+  .collection-tile .tile-label h3 { font-size: var(--fs-h6); }
+  .collection-tile.is-featured .tile-label h3 { font-size: var(--fs-h5); }
+  .collection-tile .tile-arrow { width: 28px; height: 28px; }
+  .collection-tile .tile-arrow svg { width: 12px; height: 12px; }
 }
 
 /* ---- Editorial / philosophy band ---- */

@@ -79,7 +79,7 @@
 
     const formView = document.querySelector('[data-newsletter-form-view]');
     const confirmView = document.querySelector('[data-newsletter-confirm-view]');
-    const WHATSAPP_NUMBER = '923286712746';
+    const WHATSAPP_NUMBER = '923287658832';
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();

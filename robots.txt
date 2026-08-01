@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abd-abdullah83.github.io/Corset-Atelier/sitemap.xml
+Sitemap: https://noircorset.vercel.app/sitemap.xml

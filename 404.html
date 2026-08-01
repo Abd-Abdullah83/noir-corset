@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Noir Corset">
 <meta property="og:title" content="Page Not Found — Noir Corset">
 <meta property="og:description" content="This page could not be found. Return to Noir Corset's home page or shop the collections.">
-<meta property="og:image" content="https://abd-abdullah83.github.io/Corset-Atelier/assets/images/og-image.jpg">
-<meta property="og:url" content="https://abd-abdullah83.github.io/Corset-Atelier/404.html">
+<meta property="og:image" content="https://noircorset.vercel.app/assets/images/og-image.jpg">
+<meta property="og:url" content="https://noircorset.vercel.app/404.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Page Not Found — Noir Corset">
 <meta name="twitter:description" content="This page could not be found. Return to Noir Corset's home page or shop the collections.">
-<meta name="twitter:image" content="https://abd-abdullah83.github.io/Corset-Atelier/assets/images/og-image.jpg">
+<meta name="twitter:image" content="https://noircorset.vercel.app/assets/images/og-image.jpg">
 
 <title>Page Not Found — Noir Corset</title>
 <meta name="description" content="This page could not be found. Return to Noir Corset's home page or shop the collections.">
@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/header-footer.css">
+<link rel="stylesheet" href="css/ai-widget.css">
 <link rel="stylesheet" href="css/collections.css">
 <link rel="stylesheet" href="css/custom-builder.css">
 <link rel="stylesheet" href="css/info-pages.css">
@@ -46,7 +47,16 @@
 
 <div class="brand-loader" data-brand-loader aria-hidden="true" style="display:none">
   <div class="brand-loader-mark">
-    <span class="eyelet-glyph-lg"></span>
+    <svg class="brand-loader-svg" viewBox="0 0 120 140" width="64" height="74" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="bl-panel" d="M20 2 L100 2 C106 2 110 4.5 110 8 L110 132 C110 135.5 106 138 100 138 L20 138 C14 138 10 135.5 10 132 L10 8 C10 4.5 14 2 20 2 Z" stroke-width="1.4"/>
+      <path class="bl-lace" d="M30 20 L90 40 L30 60 L90 80 L30 100 L90 120" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="bl-eyelet" cx="30" cy="20" r="4.2"/>
+      <circle class="bl-eyelet" cx="90" cy="40" r="4.2"/>
+      <circle class="bl-eyelet" cx="30" cy="60" r="4.2"/>
+      <circle class="bl-eyelet" cx="90" cy="80" r="4.2"/>
+      <circle class="bl-eyelet" cx="30" cy="100" r="4.2"/>
+      <circle class="bl-eyelet" cx="90" cy="120" r="4.2"/>
+    </svg>
     <span class="brand-loader-word">Noir Corset</span>
   </div>
 </div>
@@ -55,6 +65,7 @@
   try {
     if (!sessionStorage.getItem('ca_visited')) {
       document.currentScript.previousElementSibling.style.display = 'flex';
+      window.__caLoaderShownAt = (window.performance && performance.now) ? performance.now() : Date.now();
       sessionStorage.setItem('ca_visited', '1');
     }
   } catch (e) {}
@@ -63,7 +74,7 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<div class="announce-bar">Handcrafted to order &nbsp;·&nbsp; 50% deposit, 17-day production &nbsp;·&nbsp; Cash on delivery available</div>
+<div class="announce-bar" data-announce-bar><div class="announce-track"><span>Handcrafted to order &nbsp;·&nbsp; 50% deposit, 7-business-day production &nbsp;·&nbsp; Cash on delivery available</span><span aria-hidden="true">Handcrafted to order &nbsp;·&nbsp; 50% deposit, 7-business-day production &nbsp;·&nbsp; Cash on delivery available</span></div></div>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header" data-site-header data-solid>
@@ -86,7 +97,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.4 8 2 4.5 5.5 4c2-.3 3.8.7 4.9 2.3C11.5 4.7 13.3 3.7 15.3 4c3.5.5 5.1 4 3.5 7.7C16.5 16.4 12 21 12 21z" stroke-width="1.5" stroke-linejoin="round"/></svg>
         <span class="wishlist-count" data-wishlist-count style="display:none">0</span>
       </a>
-      <a href="https://wa.me/923286712746" target="_blank" rel="noopener" aria-label="WhatsApp us">
+      <a href="https://wa.me/923287658832" target="_blank" rel="noopener" aria-label="WhatsApp us">
         <svg viewBox="0 0 24 24"><path d="M20 4.4A10 10 0 003.5 16.6L2 22l5.6-1.5A10 10 0 1020 4.4z" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </a>
       <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -120,10 +131,10 @@
     <a href="contact.html">Contact</a>
   </nav>
   <div class="mobile-drawer-bottom">
-    <a href="https://wa.me/923286712746" target="_blank" rel="noopener">+92 328 6712746</a>
+    <a href="https://wa.me/923287658832" target="_blank" rel="noopener">+92 328 7658832</a>
     <div class="footer-social">
-      <a href="https://www.instagram.com/corset_atelierrr/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zm-5 14a4 4 0 110-8 4 4 0 010 8zm5-9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
-      <a href="https://wa.me/923286712746" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20 4.4A10 10 0 003.5 16.6L2 22l5.6-1.5A10 10 0 1020 4.4z" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+      <a href="https://www.instagram.com/corset_atelierrr/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" class="icon-solid"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zm-5 14a4 4 0 110-8 4 4 0 010 8zm5-9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
+      <a href="https://wa.me/923287658832" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20 4.4A10 10 0 003.5 16.6L2 22l5.6-1.5A10 10 0 1020 4.4z" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </div>
@@ -167,11 +178,11 @@
       </a>
       <p>Handcrafted corsetry, made to order. Bridal, evening and everyday silhouettes — laced to your exact form.</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/corset_atelierrr/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zm-5 14a4 4 0 110-8 4 4 0 010 8zm5-9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
+        <a href="https://www.instagram.com/corset_atelierrr/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" class="icon-solid"><path d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5zm-5 14a4 4 0 110-8 4 4 0 010 8zm5-9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
         <a href="#" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16 3a5 5 0 005 5M16 3v12a4 4 0 11-4-4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9h3V6h-3a4 4 0 00-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 011-1z"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2 2 0 110 4 2 2 0 010-4zM3 9h4v12H3zM10 9h3.6v1.8h.05c.5-.9 1.7-1.8 3.5-1.8 3.7 0 4.4 2.3 4.4 5.4V21H18v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H10z"/></svg></a>
-        <a href="https://wa.me/923286712746" target="_blank" rel="noopener" aria-label="WhatsApp group"><svg viewBox="0 0 24 24"><path d="M20 4.4A10 10 0 003.5 16.6L2 22l5.6-1.5A10 10 0 1020 4.4z" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" class="icon-solid"><path d="M14 9h3V6h-3a4 4 0 00-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 011-1z"/></svg></a>
+        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" class="icon-solid"><path d="M4.98 3.5a2 2 0 110 4 2 2 0 010-4zM3 9h4v12H3zM10 9h3.6v1.8h.05c.5-.9 1.7-1.8 3.5-1.8 3.7 0 4.4 2.3 4.4 5.4V21H18v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H10z"/></svg></a>
+        <a href="https://wa.me/923287658832" target="_blank" rel="noopener" aria-label="WhatsApp group"><svg viewBox="0 0 24 24"><path d="M20 4.4A10 10 0 003.5 16.6L2 22l5.6-1.5A10 10 0 1020 4.4z" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
 
@@ -212,9 +223,9 @@
     <div class="footer-col">
       <h6>Contact</h6>
       <ul>
-        <li><a href="tel:+923286712746">+92 328 6712746</a></li>
+        <li><a href="tel:+923287658832">+92 328 7658832</a></li>
         <li><a href="mailto:noircorset3@gmail.com">noircorset3@gmail.com</a></li>
-        <li><a href="https://wa.me/923286712746" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+        <li><a href="https://wa.me/923287658832" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
         <li><a href="https://www.instagram.com/corset_atelierrr/" target="_blank" rel="noopener">@corset_atelierrr</a></li>
       </ul>
     </div>
