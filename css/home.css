@@ -6,10 +6,22 @@
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh; /* dvh accounts for mobile browser chrome; vh above is the fallback for browsers that don't support it */
   min-height: 620px;
   margin-top: calc(-1 * var(--header-h));
   overflow: hidden;
   background: var(--c-void);
+}
+@media (max-width: 760px) {
+  /* 100vh/100dvh on a phone is still often taller than the useful screen
+     once you account for how little content there is to fill it — the
+     old fixed 620px min-height plus flex-end alignment and a
+     desktop-sized bottom padding (--sp-10 = 160px) meant the headline sat
+     near the very bottom of a mostly-empty dark rectangle, which read as
+     a broken/blank screen rather than a banner. Capping the height and
+     trimming the padding keeps the slide proportioned like an actual
+     banner on a small screen instead of a full-viewport void. */
+  .hero { height: 78vh; height: 78dvh; min-height: 460px; max-height: 620px; }
 }
 
 .hero-slide {
@@ -46,9 +58,12 @@
   padding: 0 var(--container-pad) var(--sp-10);
   color: var(--c-ivory);
 }
+@media (max-width: 760px) {
+  .hero-content { padding-bottom: var(--sp-7); }
+}
 .hero-content .eyebrow { color: var(--c-rose-dust); margin-bottom: var(--sp-3); display: block; }
 .hero-content .italic-accent { color: var(--c-rose-dust); }
-.hero-content h1 { max-width: 16ch; margin-bottom: var(--sp-5); }
+.hero-content h2 { max-width: 16ch; margin-bottom: var(--sp-5); }
 .hero-content .hero-actions { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
 
 /* Lace-line slider progress: eyelets fill in like lacing being drawn tight */
