@@ -1,4 +1,4 @@
-# Noir Corset — Website!
+# Noir Corset — Website
 
 Static site (plain HTML/CSS/JS, no build step, no backend). Deploys as-is to Vercel or GitHub Pages.
 
